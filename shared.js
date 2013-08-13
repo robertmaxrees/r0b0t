@@ -161,7 +161,22 @@ var Shared = module.exports = {
 			context.channel.send_reply(context.sender, e);
 		}
 	},
-
+	
+	blameServ: function(context, text) {
+		try {
+			context.channel.send_reply("none", this.blameServ.blame(text));
+		} catch(e) {
+			context.channel.send_reply(context.sender, e);
+		}
+	},
+	
+	devSayServ: function(context) {
+		try {
+			context.channel.send_reply("none", this.devSayServ.devSay());
+		} catch(e) {
+			context.channel.send_reply(context.sender, e);
+		}
+	},
 
 	commands: function(context, text) {
 		var commands = this.get_commands();
@@ -169,7 +184,6 @@ var Shared = module.exports = {
 		context.channel.send_reply (context.intent,
 			"Valid commands are: " + trigger + commands.join(", " + trigger));
 	},
-
 
 	find: function(context, text) {
 

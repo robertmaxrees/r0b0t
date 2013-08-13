@@ -1,3 +1,8 @@
+r0b0t
+=====
+
+This is my fork of oftn-bot, whos README (at time of fork or last merge, at least) can be seen below.
+
 oftn-bot
 ========
 

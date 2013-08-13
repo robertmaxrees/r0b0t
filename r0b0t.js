@@ -15,8 +15,8 @@ var Shared = require("./shared");
 
 
 var JSBot = function(profile) {
-	this.sandbox = new Sandbox(path.join(__dirname, "ecmabot-utils.js"));
-	this.factoids = new FactoidServer(path.join(__dirname, "ecmabot-factoids.json"));
+	this.sandbox = new Sandbox(path.join(__dirname, "r0b0t-utils.js"));
+	this.factoids = new FactoidServer(path.join(__dirname, "r0b0t-factoids.json"));
 	this.blameServ = new BlameServer(path.join(__dirname, "blame-athing.json"));
 	this.devSayServ = new DevSayServer(path.join(__dirname, "devsay.json"));
 	this.caniuse_server = new CanIUseServer;
@@ -238,7 +238,7 @@ JSBot.prototype.ecma = function(context, text) {
 
 
 JSBot.prototype.load_ecma_ref = function() {
-	var filename = path.join(__dirname, "ecmabot-reference.json");
+	var filename = path.join(__dirname, "r0b0t-reference.json");
 	util.puts("Loading ECMA-262 reference...");
 	var bot = this;
 	file.readFile(filename, function (err, data) {

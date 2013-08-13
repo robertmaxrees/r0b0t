@@ -1,12 +1,9 @@
 r0b0t
 =====
 
-This is my fork of oftn-bot, whos README (at time of fork or last merge, at least) can be seen below.
+This is my fork of oftn-bot, who can be found here: https://github.com/oftn/oftn-bot
 
-oftn-bot
-========
-
-This is the repository for both of the IRC bots oftn-bot (in #oftn on freenode) and ecmabot (in ##javascript on freenode). This was originally created as a replacement for v8bot (http://github.com/eisd/v8bot). Over time, it changed to include a full-featured IRC bot library.
+I have kept much of the documentation here, though I'm slowly modifying things as I go along.  Note that this may not work immediately and might need config files or other stuff.
 
 
 Features

@@ -77,6 +77,9 @@ JSBot.prototype.init = function() {
 		
 	this.register_command("devsay", Shared.devSayServ, {
 		help: "shit devs say"});
+
+	this.register_command("patsay", Shared.patSay, {
+		help: "shit pat says"});
 	
 	this.register_command("commands", Shared.commands);
 	

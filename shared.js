@@ -164,7 +164,7 @@ var Shared = module.exports = {
 	
 	blameServ: function(context, text) {
 		try {
-			context.channel.send_reply("none", this.blameServ.blame(text));
+			context.channel.send_reply("none", this.blameServ.getQuote(text));
 		} catch(e) {
 			context.channel.send_reply(context.sender, e);
 		}
@@ -172,7 +172,7 @@ var Shared = module.exports = {
 	
 	devSayServ: function(context) {
 		try {
-			context.channel.send_reply("none", this.devSayServ.devSay());
+			context.channel.send_reply("none", this.devSayServ.getQuote());
 		} catch(e) {
 			context.channel.send_reply(context.sender, e);
 		}

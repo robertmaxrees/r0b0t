@@ -5,6 +5,7 @@ This is my fork of oftn-bot, who can be found here: https://github.com/oftn/oftn
 
 I have kept much of the documentation here, though I'm slowly modifying things as I go along.  Note that this may not work immediately and might need config files or other stuff.
 
+This is going to have a lot of hacks, funk, crap code, and other things.  This should never be relied on for any reason whatsoever.  It's a toy and nothing more.
 
 Features
 --------

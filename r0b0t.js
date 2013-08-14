@@ -7,8 +7,7 @@ var Sandbox = require("./lib/sandbox");
 var FactoidServer = require("./lib/factoidserv");
 var FeelingLucky = require("./lib/feelinglucky");
 var CanIUseServer = require("./lib/caniuse");
-var BlameServer = require("./lib/blame");
-var DevSayServer = require("./lib/devsay");
+var getQuoteServer = require("./lib/getquote");
 
 var Bot = require("./lib/irc");
 var Shared = require("./shared");
@@ -17,8 +16,8 @@ var Shared = require("./shared");
 var JSBot = function(profile) {
 	this.sandbox = new Sandbox(path.join(__dirname, "r0b0t-utils.js"));
 	this.factoids = new FactoidServer(path.join(__dirname, "r0b0t-factoids.json"));
-	this.blameServ = new BlameServer(path.join(__dirname, "blame-athing.json"));
-	this.devSayServ = new DevSayServer(path.join(__dirname, "devsay.json"));
+	this.blameServ = new getQuoteServer(path.join(__dirname, "blame-athing.json"));
+	this.devSayServ = new getQuoteServer(path.join(__dirname, "devsay.json"));
 	this.caniuse_server = new CanIUseServer;
 
 	Bot.call(this, profile);

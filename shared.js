@@ -28,10 +28,11 @@ var Shared = module.exports = {
 	},
 	
 	
-	currWeather: function(context, zip) {
-		if (typeof zip === 'undefined'){
+	weatherServer: function(context, zip) {
+		if (zip.length === 0){
 			zip = '95928';
 		};
+
 		GetWeather(zip, function(data) {
 			if (data) {
 				context.channel.send_reply (context.intent, 

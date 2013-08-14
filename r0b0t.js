@@ -19,6 +19,7 @@ var JSBot = function(profile) {
 	this.factoids = new FactoidServer(path.join(__dirname, "r0b0t-factoids.json"));
 	this.blameServ = new getQuoteServer(path.join(__dirname, "blame-athing.json"));
 	this.devSayServ = new getQuoteServer(path.join(__dirname, "devsay.json"));
+	this.weatherServer = new GetWeather(path.join(__dirname, "weather.json"));
 	this.caniuse_server = new CanIUseServer;
 
 	Bot.call(this, profile);
@@ -79,7 +80,7 @@ JSBot.prototype.init = function() {
 	this.register_command("devsay", Shared.devSayServ, {
 		help: "shit devs say"});
 	
-	this.register_command("weather", Shared.currWeather, {
+	this.register_command("weather", Shared.weatherServer, {
 		help: "current weather at Build's Chico HQ"});
 
 	this.register_command("commands", Shared.commands);

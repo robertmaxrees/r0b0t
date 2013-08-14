@@ -6,6 +6,7 @@ var http = require("http");
 var Sandbox = require("./lib/sandbox");
 var FactoidServer = require("./lib/factoidserv");
 var FeelingLucky = require("./lib/feelinglucky");
+var GetWeather = require("./lib/getweather");
 var CanIUseServer = require("./lib/caniuse");
 var getQuoteServer = require("./lib/getquote");
 
@@ -32,8 +33,8 @@ util.inherits(JSBot, Bot);
 JSBot.prototype.init = function() {
 	Bot.prototype.init.call(this);
 	
-	this.register_listener(/^((?:sm|v8|js|>>?|\|)>)([^>].*)+/, Shared.execute_js);
-	
+	this.register_listener(/^((?:v8|js|>>?|\|)>)([^>].*)+/, Shared.execute_js);
+
 	//this.register_listener(/^(\S+)(\+\+|--);?$/, this.do_beers);
 	
 	this.register_command("g", Shared.google, {
@@ -78,6 +79,9 @@ JSBot.prototype.init = function() {
 	this.register_command("devsay", Shared.devSayServ, {
 		help: "shit devs say"});
 	
+	this.register_command("weather", Shared.currWeather, {
+		help: "current weather at Build's Chico HQ"});
+
 	this.register_command("commands", Shared.commands);
 	
 	this.on('command_not_found', this.command_not_found);

@@ -1,6 +1,7 @@
 // This is for common functions defined in many bots at once
 var Sandbox = require("./lib/sandbox");
 var FeelingLucky = require("./lib/feelinglucky");
+var GetWeather = require("./lib/getweather");
 
 function parse_regex_literal (text) {
 	var regexparsed = text.match(/s\/((?:[^\\\/]|\\.)*)\/((?:[^\\\/]|\\.)*)\/([gi]*)$/);
@@ -27,21 +28,31 @@ var Shared = module.exports = {
 	},
 	
 	
+	currWeather: function(context, zip) {
+		if (typeof zip === 'undefined'){
+			zip = '95928';
+		};
+		GetWeather(zip, function(data) {
+			if (data) {
+				context.channel.send_reply (context.intent, 
+					data.title+" <"+data.url+">");
+			} else {
+				context.channel.send_reply (context.sender, "No search results found.");
+			}
+		});
+	},
+
 	execute_js: function(context, text, command, code) {
-		var engine, person = context.sender;
+		var person = context.sender;
 	
 		/* This should be temporary. */
 		if (!context.priv) {
 			if (command === "v8>" && context.channel.userlist["v8bot"]) {
 				return;
 			}
-			if (command === "js>" && context.channel.userlist["gbot2"]) {
-				return;
-			}
 		}
 	
-		switch (command) {
-		case "|>": /* Multi-line input */
+		if (command === "|>") {
 			person.js = person.js || {timeout: null, code: []};
 			/* Clear input buffer after a minute */
 			clearTimeout (person.js.timeout);
@@ -50,17 +61,6 @@ var Shared = module.exports = {
 				context.channel.send_reply (context.sender, "Your `|>` line input has been cleared. (1 minute)");
 			}, 1000 * 60);
 			person.js.code.push (code);
-			return;
-		case "h>":
-		case "hs>":
-			engine = Sandbox.Haskell; break;
-		case ">>>":
-		case "v>":
-		case "v8>":
-			// context.channel.send_reply(context.intent, "v8 temporarily disabled, please use js> instead."); return;
-			engine = Sandbox.V8; break;
-		default:
-			engine = Sandbox.SpiderMonkey; break;
 		}
 
 		if (person.js && person.js.code.length) {
@@ -69,7 +69,7 @@ var Shared = module.exports = {
 			clearTimeout (person.js.timeout);
 		}
 
-		this.sandbox.run(engine, 4000, code, function(result) {
+		this.sandbox.run(4000, code, function(result) {
 			var reply;
 
 			try {

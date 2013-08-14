@@ -1224,9 +1224,6 @@
 		"v8>": {
 			"alias": ">>"
 		},
-		"sm>": {
-			"alias": ">>"
-		},
 		"for-in": {
 			"alias": "for..in"
 		},
@@ -1238,7 +1235,7 @@
 			"popularity": 18
 		},
 		"!>>": {
-			"value": ">> and sm> run on the Spidermonkey JS engine. >>> and v8> run on the v8 JS engine.",
+			"value": ">>, >>> and v8> run command on the v8 JS engine.",
 			"popularity": 11
 		},
 		"!>>>": {
